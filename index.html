@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tomavic.github.io/">
+<meta property="og:title" content="Hatem Ahmad">
+<meta property="og:description" content="Senior Staff Software Engineer and frontend architect in Cairo. Founder of Enigma Technology Lab.">
+<meta property="og:image" content="https://tomavic.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<title>Hatem Ahmad</title>
+<meta name="description" content="Hatem Ahmad, Senior Staff Software Engineer and frontend architect in Cairo, founder of Enigma Technology Lab.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='125 190 345 345'%3E%3Cpath transform='matrix(1,0,0,-1,240.4302,196.22644)' d='M0 0-76.99-58.099V-334.515L0-276.951V-193.01L93.208-128.317H.356V0' fill='%23ff0800'/%3E%3Cpath transform='matrix(1,0,0,-1,431.8359,196.22644)' d='M0 0V-276.594L-76.455-334.515V-206.733H-170.02L-76.634-141.327V-57.208Z' fill='%23052789'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Kufi+Arabic:wght@500..800&display=swap">
+<style>
+/* Layout: one continuous line runs down a track column on the inline-start side; each career stage bends it into a drawing, then it ends in a shell of "remote" sections. Ink, paper and both accents come from the Enigma logo (red #DC4B4B, blue #0059FF). */
+:root {
+  --bg: #F6F7FB;
+  --panel: #FCFCFE;
+  --fg: #0B1020;
+  --muted: #586087;
+  --rule: #D6D9E6;
+  --mark-red: #FF0800;
+  --mark-blue: #052789;
+
+  --blue-l: #0059FF; --blue-d: #7FA8FF;
+  --red-l: #C93C3C;  --red-d: #F26A6A; /* #DC4B4B, deepened a step so small text passes contrast */
+  --sw-blue: var(--blue-l); --sw-red: var(--red-l);
+  --accent-l: var(--blue-l); --accent-d: var(--blue-d);
+  --accent: var(--accent-l);
+  --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
+
+  --f-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", "IBM Plex Sans Arabic", ui-monospace, Menlo, Consolas, monospace;
+  --track-ls: 0.08em;
+
+  --s-1: 0.8125rem;
+  --s0: 1.0625rem;
+  --s1: 1.25rem;
+  --s2: 1.75rem;
+  --s3: clamp(1.9rem, 4.2vw, 2.9rem);
+  --s4: clamp(3.2rem, 11vw, 7.5rem);
+
+  --track: 200px;  /* drawing column; the SVGs are 200 units wide */
+  --sw: 2.5;       /* stroke width in SVG units */
+  --rail: 2.5px;   /* the same stroke, as CSS pixels */
+  --gap: clamp(16px, 4vw, 56px);
+}
+:root[data-accent="red"] { --accent-l: var(--red-l); --accent-d: var(--red-d); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B1020; --panel: #121830; --fg: #E8EBF5; --muted: #9AA3C4; --rule: #262E4A;
+    --mark-blue: #6F8BFF;
+    --sw-blue: var(--blue-d); --sw-red: var(--red-d);
+    --accent: var(--accent-d);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B1020; --panel: #121830; --fg: #E8EBF5; --muted: #9AA3C4; --rule: #262E4A;
+  --mark-blue: #6F8BFF;
+  --sw-blue: var(--blue-d); --sw-red: var(--red-d);
+  --accent: var(--accent-d);
+  color-scheme: dark;
+}
+:root:lang(ar) {
+  --f-display: "Noto Kufi Arabic", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans Arabic", "IBM Plex Sans", system-ui, sans-serif;
+  --track-ls: 0; /* letter-spacing breaks Arabic joining */
+}
+
+*, ::before, ::after { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--f-body); font-size: var(--s0); line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+:lang(ar) body { line-height: 1.85; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.mono { font-family: var(--f-mono); font-size: var(--s-1); letter-spacing: var(--track-ls); }
+.num { font-variant-numeric: tabular-nums; unicode-bidi: isolate; direction: ltr; }
+
+.gutter {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1120px; margin-inline: auto; }
+
+/* ---------- top bar: the live controls ---------- */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.bar .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; padding-block: 0.6rem; }
+.brand { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--fg); text-decoration: none; font-family: var(--f-display); font-weight: 700; font-size: 1rem; }
+.brand svg { width: 18px; height: 22px; }
+.controls { display: flex; flex-wrap: wrap; gap: 0.5rem 0.75rem; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 2px; margin: 0; min-width: 0; background: var(--panel); }
+.seg label { position: relative; cursor: pointer; }
+.seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.seg span {
+  display: inline-flex; align-items: center; gap: 0.4rem; min-height: 28px; padding: 0.15rem 0.7rem; border-radius: 999px;
+  font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: var(--track-ls); color: var(--muted);
+}
+.seg input:checked + span { background: var(--fg); color: var(--bg); }
+.seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 1px; }
+.seg .ar-glyph { font-family: "Noto Kufi Arabic", "IBM Plex Sans Arabic", sans-serif; font-size: 0.85rem; letter-spacing: 0; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.blue { background: var(--sw-blue); }
+.dot.red { background: var(--sw-red); }
+.seg.tokens span { padding-inline: 0.55rem; }
+
+/* ---------- the line: shared track ---------- */
+.lane { display: grid; grid-template-columns: var(--track) minmax(0, 1fr); column-gap: var(--gap); }
+.track { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+.track svg { display: block; width: 100%; height: auto; overflow: visible; }
+[dir="rtl"] .track svg { transform: scaleX(-1); }
+.rail { flex: 1; width: var(--rail); min-height: 2rem; background: var(--accent); border-radius: 2px; }
+.draw { fill: none; stroke: var(--accent); stroke-width: var(--sw); stroke-linecap: round; stroke-linejoin: round; }
+.draw.thin { stroke-width: calc(var(--sw) * 0.6); }
+.bird .draw { stroke-width: calc(var(--sw) / 0.55); }
+.grid-lines { fill: none; stroke: var(--rule); stroke-width: 1; }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(2rem, 6vw, 4.5rem) 0; }
+.hero .track svg.mark .draw { stroke-width: calc(var(--sw) * 1.4); }
+.hero-body { display: grid; gap: 1.1rem; align-content: start; padding-block-end: clamp(3rem, 8vw, 6rem); min-width: 0; }
+.eyebrow { color: var(--muted); text-transform: uppercase; }
+.hero h1 {
+  font-family: var(--f-display); font-size: var(--s4); line-height: 0.9; font-weight: 800;
+  font-variation-settings: "wdth" 75, "opsz" 96; letter-spacing: -0.02em;
+}
+:lang(ar) .hero h1 { line-height: 1.25; letter-spacing: 0; font-variation-settings: normal; }
+.roles { display: flex; flex-wrap: wrap; gap: 0.25rem 0; color: var(--muted); text-transform: uppercase; }
+.roles span:not(:last-child)::after { content: "·"; padding-inline: 0.7rem; color: var(--rule); }
+.thesis { font-size: var(--s2); line-height: 1.3; max-width: 30ch; font-family: var(--f-display); font-weight: 500; font-variation-settings: "opsz" 36; }
+:lang(ar) .thesis { line-height: 1.6; font-size: var(--s1); max-width: 40ch; }
+
+/* ---------- chapters ---------- */
+.ch-body { display: grid; gap: 0.9rem; align-content: start; padding-block: 0 clamp(3.5rem, 9vw, 6.5rem); min-width: 0; }
+.years { color: var(--accent); }
+.chapter h2 {
+  font-family: var(--f-display); font-size: var(--s3); line-height: 1.05; font-weight: 700;
+  font-variation-settings: "wdth" 85, "opsz" 72; letter-spacing: -0.01em;
+}
+:lang(ar) .chapter h2 { line-height: 1.4; letter-spacing: 0; font-variation-settings: normal; }
+.ch-body p { max-width: 62ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; padding-top: 0.3rem; }
+.chips li { border: 1px solid var(--rule); border-radius: 3px; padding: 0.2rem 0.55rem; font-family: var(--f-mono); font-size: 0.78rem; color: var(--fg); background: var(--panel); }
+.chips li.hit { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+/* line animation: drawn by scroll where supported, fully drawn otherwise */
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero .draw { stroke-dasharray: 1; animation: draw 2.2s cubic-bezier(.6,.1,.2,1) both; }
+  .hero .draw:nth-of-type(2) { animation-delay: .35s; }
+  .hero .draw:nth-of-type(3) { animation-delay: .7s; }
+  .hero .rail { transform-origin: top; animation: grow 1.2s 1.6s cubic-bezier(.5,0,.2,1) both; }
+}
+
+/* ---------- shell: the line becomes a bus, and each remote plugs into it ---------- */
+.end { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); flex: none; }
+.plugs { display: grid; gap: clamp(4rem, 9vw, 6.5rem); padding-block: 0 2.5rem; min-width: 0; }
+.plug { position: relative; display: grid; gap: 1.25rem; align-content: start; min-width: 0; }
+.plug::before {
+  content: ""; position: absolute; top: 0.15rem;
+  inset-inline-start: calc(-1 * (var(--gap) + var(--track) / 2) - 9px);
+  width: 18px; height: 18px; border-radius: 50%;
+  border: var(--rail) solid var(--accent); background: var(--bg);
+  transition: background-color .35s ease;
+}
+.plug.lit::before { background: var(--accent); }
+.pen {
+  position: fixed; left: 0; top: 0; z-index: 5; width: 12px; height: 12px; margin: -6px 0 0 -6px;
+  border-radius: 50%; background: var(--accent); pointer-events: none; opacity: 0; transition: opacity .3s ease;
+  box-shadow: 0 0 0 5px var(--accent-soft), 0 0 18px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+.pen.on { opacity: 1; }
+.tag { color: var(--accent); }
+.plug h2 {
+  font-family: var(--f-display); font-size: var(--s3); line-height: 1.05; font-weight: 700;
+  font-variation-settings: "wdth" 85, "opsz" 72; letter-spacing: -0.01em;
+}
+:lang(ar) .plug h2 { line-height: 1.4; letter-spacing: 0; font-variation-settings: normal; }
+.note { color: var(--muted); max-width: 62ch; }
+.k { color: var(--muted); text-transform: uppercase; }
+
+/* capabilities: one branch off the bus per capability */
+.caps li { position: relative; display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 0.25rem 2rem; padding-block: 1rem; border-top: 1px solid var(--rule); }
+.caps li::before {
+  content: ""; position: absolute; top: calc(1rem + 0.8rem - var(--rail) / 2);
+  inset-inline-start: calc(-1 * (var(--gap) + var(--track) / 2));
+  width: calc(var(--gap) + var(--track) / 2 - 0.75rem); height: var(--rail);
+  background: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.caps h3 { font-family: var(--f-display); font-size: var(--s1); font-weight: 650; line-height: 1.3; }
+.caps p { color: var(--muted); font-size: 0.97rem; }
+.industries { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; border-top: 1px solid var(--rule); padding-top: 1rem; }
+
+/* principles: a loop. Nodes sit on a ring, and each one's text sits further out on the same angle (--a) */
+.cycle { container-type: inline-size; }
+.orbit { position: relative; width: 100%; max-width: 680px; aspect-ratio: 1; margin-inline: auto; }
+.orbit::before { content: ""; position: absolute; inset: 30%; border: var(--rail) solid var(--accent); border-radius: 50%; }
+.ring { list-style: none; margin: 0; padding: 0; counter-reset: m; }
+.ring li { counter-increment: m; }
+.ring li::before {
+  content: counter(m); position: absolute; translate: -50% -50%;
+  inset-inline-start: calc(50% + cos(var(--a)) * 20%); top: calc(50% + sin(var(--a)) * 20%);
+  width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center;
+  background: var(--bg); border: var(--rail) solid var(--accent);
+  font-family: var(--f-mono); font-size: 0.8rem; line-height: 1; color: var(--accent);
+}
+.ring .txt {
+  position: absolute; translate: -50% -50%; width: 26%;
+  inset-inline-start: calc(50% + cos(var(--a)) * 37%); top: calc(50% + sin(var(--a)) * 37%);
+  display: grid; gap: 0.3rem; text-align: center;
+}
+[dir="rtl"] .ring li::before, [dir="rtl"] .ring .txt { translate: 50% -50%; }
+.ring h3 { font-family: var(--f-display); font-size: 1.1rem; font-weight: 650; line-height: 1.25; }
+.ring p { color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+.hub { position: absolute; inset: 0; margin: 0; display: grid; place-items: center; color: var(--accent); pointer-events: none; }
+/* too narrow for the ring: the same loop as a numbered list that ends by pointing back to the start */
+@container (max-width: 600px) {
+  .orbit { aspect-ratio: auto; max-width: none; display: grid; gap: 1rem; }
+  .orbit::before { display: none; }
+  .ring { display: grid; gap: 1.1rem; }
+  .ring li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.85rem; align-items: start; }
+  .ring li::before, .ring .txt, [dir="rtl"] .ring li::before, [dir="rtl"] .ring .txt { position: static; translate: none; }
+  .ring .txt { width: auto; text-align: start; }
+  .hub { position: static; place-items: start; }
+}
+
+/* voices: letters on file */
+/* six tracks: short letters take a third of a row, long ones half, so rows fill */
+.letters { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem; }
+.letter { grid-column: span 2; }
+.letter.long { grid-column: span 3; }
+@media (max-width: 900px) {
+  .letters { grid-template-columns: minmax(0, 1fr); }
+  .letter, .letter.long { grid-column: auto; }
+}
+.letter { border: 1px solid var(--rule); border-radius: 4px; background: var(--panel); padding: 1.25rem; display: grid; grid-template-rows: auto 1fr auto; gap: 0.9rem; min-width: 0; }
+.letter .kind { color: var(--muted); text-transform: uppercase; font-size: 0.72rem; }
+.letter .q { font-family: var(--f-display); font-weight: 650; font-size: var(--s1); line-height: 1.35; }
+.letter .q.big { font-size: var(--s2); line-height: 1.15; font-variation-settings: "wdth" 85; }
+:lang(ar) .letter .q.big { line-height: 1.5; font-variation-settings: normal; }
+.letter.award .q { color: var(--accent); }
+.letter .who { font-size: 0.78rem; border-top: 1px solid var(--rule); padding-top: 0.7rem; }
+.pattern { display: grid; gap: 0.75rem; }
+
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
+.mail code { font-family: var(--f-display); font-weight: 650; font-size: clamp(1.4rem, 4.5vw, 2.4rem); user-select: all; overflow-wrap: anywhere; direction: ltr; unicode-bidi: isolate; }
+button {
+  font-family: var(--f-mono); font-size: var(--s-1); letter-spacing: var(--track-ls); min-height: 36px;
+  background: var(--fg); color: var(--bg); border: 0; border-radius: 999px; padding: 0.45rem 1rem; cursor: pointer;
+}
+button:hover { background: var(--accent); }
+.links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1rem; color: var(--muted); padding-block: 2rem 3rem; font-size: 0.75rem; }
+.foot svg { width: 14px; height: 17px; vertical-align: -3px; margin-inline-end: 0.5rem; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  :root { --track: 140px; --sw: 3; --rail: 2.1px; }
+}
+@media (max-width: 640px) {
+  :root { --track: 64px; --sw: 5.5; --rail: 1.8px; }
+  .brand span { display: none; }
+  .caps li { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header class="bar gutter">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="150 186 296 356" aria-hidden="true"><path transform="matrix(1,0,0,-1,240.4302,196.22644)" d="M0 0-76.99-58.099V-334.515L0-276.951V-193.01L93.208-128.317H.356V0" fill="var(--mark-red)"/><path transform="matrix(1,0,0,-1,431.8359,196.22644)" d="M0 0V-276.594L-76.455-334.515V-206.733H-170.02L-76.634-141.327V-57.208Z" fill="var(--mark-blue)"/></svg>
+      <span data-i18n="hero.name">Hatem Ahmad</span>
+    </a>
+    <div class="controls">
+      <fieldset class="seg" id="f-lang">
+        <legend class="sr" data-i18n="ui.lang">Language</legend>
+        <label><input type="radio" name="lang" id="lang-en" value="en" checked><span>EN</span></label>
+        <label><input type="radio" name="lang" id="lang-ar" value="ar"><span class="ar-glyph" lang="ar">عربي</span></label>
+      </fieldset>
+      <fieldset class="seg" id="f-theme">
+        <legend class="sr" data-i18n="ui.theme">Theme</legend>
+        <label><input type="radio" name="theme" id="theme-auto" value="auto" checked><span data-i18n="ui.auto">Auto</span></label>
+        <label><input type="radio" name="theme" id="theme-light" value="light"><span data-i18n="ui.light">Light</span></label>
+        <label><input type="radio" name="theme" id="theme-dark" value="dark"><span data-i18n="ui.dark">Dark</span></label>
+      </fieldset>
+      <fieldset class="seg tokens" id="f-accent">
+        <legend class="sr" data-i18n="ui.tokens">Colour tokens</legend>
+        <label title="Blue"><input type="radio" name="accent" id="accent-blue" value="blue" checked><span><i class="dot blue"></i><span class="sr" data-i18n="ui.blue">Blue</span></span></label>
+        <label title="Red"><input type="radio" name="accent" id="accent-red" value="red"><span><i class="dot red"></i><span class="sr" data-i18n="ui.red">Red</span></span></label>
+      </fieldset>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- hero: the line starts as the 2022 line-drawn H monogram -->
+  <section class="hero gutter">
+    <div class="wrap lane">
+      <div class="track">
+        <svg class="mark" viewBox="160 280 280 280" aria-hidden="true">
+          <path class="draw" pathLength="1" transform="matrix(1,0,0,-1,229.6436,312.89985)" d="M0 0C10.738 6.322 24 11.168 24 11.168 27.327 12.384 39.059 16.613 52.04 18.535 78.988 22.523 101.726 15.142 108.594 12.832 158.982-4.116 181.521-48.579 183.208-52.04 186.514-58.82 204.915-98.125 190.337-144.95 176.907-188.086 139.516-224.677 90.297-233.347 87.357-233.864 17.318-244.932-28.752-190.812-63.552-149.933-64-96.15-48.951-59.168-38.284-32.956-17.956-10.571 0 0Z"/>
+          <path class="draw" pathLength="1" transform="matrix(1,0,0,-1,245.8491,338.89494)" d="M0 0C-2-1.006-4.835-2.548-8.037-4.718-25.68-16.671-33.347-33.418-37.176-41.876-46.841-63.227-46.264-82.187-45.909-88.124-45.735-91.014-42.729-130.893-10.8-157.361-7.304-160.259-.017-166.209 10.99-170.885 20.582-174.96 36.362-181.663 55.319-180.263 60.821-179.856 67.354-178.711 72.428-182.758 77.458-186.77 77.622-193.145 78.488-193.094 79.852-193.015 80.783-177.123 79.082-109.926 77.89-107.56 75.656-103.869 71.715-100.54 62.212-92.51 50.932-93.459 49.274-93.626 46.261-93.929 39.342-95.101 32.982-100.54 28.249-104.589 25.946-109.19 24.903-111.708V-146.876C21.36-145.21 17.405-143.077 13.26-140.342 8.227-137.021 4.092-133.589 .785-130.48 .523-86.987 .262-43.494 0 0Z"/>
+          <path class="draw" pathLength="1" transform="matrix(1,0,0,-1,349.5547,503.3851)" d="M0 0C4.181 2.514 9.708 6.237 15.594 11.495 16.059 11.911 20.19 15.668 23.792 19.693 34.152 31.271 39.154 45.427 40.723 49.99 43.241 57.319 49.505 76.302 45 100.426 39.067 132.19 18.521 151.147 10.604 157.634 7.812 159.921-.632 166.574-13.472 172.101-36.076 181.832-56.682 181.349-67.634 180.268-69.996 181.159-73.1 182.758-75.476 185.792-78.075 189.111-78.298 192.228-78.684 192.208-79.561 192.164-79.912 175.942-77.922 109.369-76.938 107.31-75.235 104.369-72.356 101.584-64.981 94.45-52.888 91.183-41.971 95.079-30.628 99.127-25.822 109.023-24.861 111.119L-24.238 148.188C-20.207 146.242-15.634 143.692-10.842 140.347-6.785 137.514-3.333 134.644-.445 131.97-.297 87.98-.148 43.99 0 0Z"/>
+        </svg>
+        <div class="rail"></div>
+      </div>
+      <div class="hero-body">
+        <p class="eyebrow mono" data-i18n="hero.eyebrow">Cairo · since 2013</p>
+        <h1 data-i18n="hero.name">Hatem Ahmad</h1>
+        <p class="roles mono">
+          <span data-i18n="hero.role1">Senior Staff Software Engineer</span>
+          <span data-i18n="hero.role2">Frontend Architect</span>
+          <span data-i18n="hero.role3">Founder, Enigma Technology Lab</span>
+        </p>
+        <p class="thesis" data-i18n="hero.thesis">I build the frontends that enterprise teams grow on, and I leave every codebase better than I found it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1 · mathematics: an integral sign over a damped wave -->
+  <section class="chapter gutter" aria-labelledby="ch1">
+    <div class="wrap lane">
+      <div class="track">
+        <svg viewBox="0 0 200 260" aria-hidden="true">
+          <path class="draw" pathLength="1" d="M100 0 V24 C100 40 130 30 128 48 C126 62 104 58 102 84 L98 186 C96 212 72 214 72 198 C72 188 86 186 90 196 C94 206 100 214 100 232 V260"/>
+          <path class="draw thin" pathLength="1" d="M8 130 C24 72 40 72 52 130 S78 178 92 130 S116 100 126 130 S146 150 156 130 S176 118 192 130"/>
+        </svg>
+        <div class="rail"></div>
+      </div>
+      <div class="ch-body">
+        <p class="years mono num" data-i18n="ch1.years">2008 – 2014</p>
+        <h2 id="ch1" data-i18n="ch1.title">Mathematics first</h2>
+        <p data-i18n="ch1.body"></p>
+        <ul class="chips" data-chips="ch1.chips"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · design: Hatem's own one-stroke hummingbird (2022) on a layout grid -->
+  <section class="chapter gutter" aria-labelledby="ch2">
+    <div class="wrap lane">
+      <div class="track">
+        <svg viewBox="0 0 200 260" aria-hidden="true">
+          <path class="grid-lines" d="M40 40 V220 M100 40 V220 M160 40 V220 M20 70 H180 M20 130 H180 M20 190 H180"/>
+          <path class="draw" pathLength="1" d="M100 0 V40 M100 218 V260"/>
+          <g class="bird" transform="translate(-84.8 -86.2) scale(.55)">
+            <path class="draw" pathLength="1" transform="matrix(1,0,0,-1,308.0873,402.0598)" d="M0 0C-40.02 17.366-53.043 37.028-57.262 52.266-60.718 64.746-56.913 69.366-59.339 91.835-63.506 130.408-78.227 149.256-73.468 152.587-67.389 156.84-40.6 128.04-19.203 105.039 17.646 65.423 25.721 48.57 29.385 39.899 30.906 36.3 33.347 30.135 40.972-6.358 58.676-91.079 55.426-105.257 48.638-116.136 39.528-130.735 22.71-142.451 14.128-138.458 7.246-135.256 6.79-122.489 8.477-91.835 11.702-33.238 13.43-3.947 21.193 12.716 38.748 50.397 74.129 81.501 90.422 74.881 96.126 72.563 95.706 66.322 107.558 56.612 118.953 47.276 129.931 44.202 129.463 42.807 128.804 40.844 108.911 52.522 96.78 45.211 82.726 36.741 93.44 11.437 78.413-14.835 68.668-31.871 51.569-40.972 51.569-40.972 40.041-47.805 32.376-48.138 23.312-56.514 15.132-64.071 11.195-73.204 9.147-79.744"/>
+            <path class="draw" pathLength="1" transform="matrix(1,0,0,-1,410.1393,354.85533)" d="M0 0C-5.65 .357-20.585 .52-34.942-9.058-59.46-25.414-60.107-55.375-60.121-58.185"/>
+          </g>
+        </svg>
+        <div class="rail"></div>
+      </div>
+      <div class="ch-body">
+        <p class="years mono num" data-i18n="ch2.years">2013 – 2016</p>
+        <h2 id="ch2" data-i18n="ch2.title">Then design</h2>
+        <p data-i18n="ch2.body"></p>
+        <ul class="chips" data-chips="ch2.chips"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · mobile: a phone holding a wallet card -->
+  <section class="chapter gutter" aria-labelledby="ch3">
+    <div class="wrap lane">
+      <div class="track">
+        <svg viewBox="0 0 200 260" aria-hidden="true">
+          <path class="draw" pathLength="1" d="M100 0 V30 H72 Q60 30 60 42 V218 Q60 230 72 230 H128 Q140 230 140 218 V42 Q140 30 128 30 H108 M90 44 H110 M72 112 H128 V150 H72 Z M80 124 H100 M80 136 H92 M92 218 H108 M100 230 V260"/>
+        </svg>
+        <div class="rail"></div>
+      </div>
+      <div class="ch-body">
+        <p class="years mono num" data-i18n="ch3.years">2016 – 2019</p>
+        <h2 id="ch3" data-i18n="ch3.title">Phones, in three countries</h2>
+        <p data-i18n="ch3.body"></p>
+        <ul class="chips" data-chips="ch3.chips"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · web at national scale: a browser with a ticket -->
+  <section class="chapter gutter" aria-labelledby="ch4">
+    <div class="wrap lane">
+      <div class="track">
+        <svg viewBox="0 0 200 260" aria-hidden="true">
+          <path class="draw" pathLength="1" d="M100 0 V40 H28 Q16 40 16 52 V198 Q16 210 28 210 H172 Q184 210 184 198 V52 Q184 40 172 40 H100 M16 64 H184 M28 52 h.1 M40 52 h.1 M52 52 h.1 M32 86 H96 M32 102 H80 M112 120 H168 V140 A8 8 0 0 0 168 156 V176 H112 V156 A8 8 0 0 0 112 140 Z M130 120 V176 M100 210 V260"/>
+        </svg>
+        <div class="rail"></div>
+      </div>
+      <div class="ch-body">
+        <p class="years mono num" data-i18n="ch4.years">2019 – 2020</p>
+        <h2 id="ch4" data-i18n="ch4.title">The web at national scale</h2>
+        <p data-i18n="ch4.body"></p>
+        <ul class="chips" data-chips="ch4.chips"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · lead: a component tree -->
+  <section class="chapter gutter" aria-labelledby="ch5">
+    <div class="wrap lane">
+      <div class="track">
+        <svg viewBox="0 0 200 260" aria-hidden="true">
+          <path class="draw" pathLength="1" d="M100 0 V38 M112 50 A12 12 0 1 1 88 50 A12 12 0 1 1 112 50 M100 62 C100 96 50 92 50 121 M100 62 V121 M100 62 C100 96 150 92 150 121 M59 130 A9 9 0 1 1 41 130 A9 9 0 1 1 59 130 M109 130 A9 9 0 1 1 91 130 A9 9 0 1 1 109 130 M159 130 A9 9 0 1 1 141 130 A9 9 0 1 1 159 130 M50 139 C50 172 30 168 30 194 M50 139 C50 172 70 168 70 194 M150 139 C150 172 130 168 130 194 M150 139 C150 172 170 168 170 194 M36 200 A6 6 0 1 1 24 200 A6 6 0 1 1 36 200 M76 200 A6 6 0 1 1 64 200 A6 6 0 1 1 76 200 M136 200 A6 6 0 1 1 124 200 A6 6 0 1 1 136 200 M176 200 A6 6 0 1 1 164 200 A6 6 0 1 1 176 200 M100 139 V260"/>
+        </svg>
+        <div class="rail"></div>
+      </div>
+      <div class="ch-body">
+        <p class="years mono num" data-i18n="ch5.years">2020 – 2024</p>
+        <h2 id="ch5" data-i18n="ch5.title">Leading the team</h2>
+        <p data-i18n="ch5.body"></p>
+        <ul class="chips" data-chips="ch5.chips"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · architect: a shell with four remotes -->
+  <section class="chapter gutter" aria-labelledby="ch6">
+    <div class="wrap lane">
+      <div class="track">
+        <svg viewBox="0 0 200 260" aria-hidden="true">
+          <path class="draw" pathLength="1" d="M100 0 V30 H32 Q20 30 20 42 V218 Q20 230 32 230 H168 Q180 230 180 218 V42 Q180 30 168 30 H100 M20 56 H180 M36 72 h56 v56 h-56 Z M108 72 h56 v56 h-56 Z M36 144 h56 v70 h-56 Z M108 144 h56 v70 h-56 Z M100 230 V260"/>
+        </svg>
+        <div class="rail"></div>
+      </div>
+      <div class="ch-body">
+        <p class="years mono num" data-i18n="ch6.years">2024 – now</p>
+        <h2 id="ch6" data-i18n="ch6.title">Architecting the platform</h2>
+        <p data-i18n="ch6.body"></p>
+        <ul class="chips" data-chips="ch6.chips"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · the lab: the line closes into a keyhole -->
+  <section class="chapter gutter" aria-labelledby="ch7">
+    <div class="wrap lane">
+      <div class="track">
+        <svg viewBox="0 0 200 260" aria-hidden="true">
+          <path class="draw" pathLength="1" d="M100 0 V56 A74 74 0 1 1 99.9 56 M114 118 A14 14 0 1 0 86 118 A14 14 0 1 0 114 118 M94 131 L88 166 H112 L106 131 M100 166 V260"/>
+        </svg>
+        <div class="rail"></div>
+      </div>
+      <div class="ch-body">
+        <p class="years mono num" data-i18n="ch7.years">2018 – now</p>
+        <h2 id="ch7" data-i18n="ch7.title">Founding the lab</h2>
+        <p data-i18n="ch7.body"></p>
+        <ul class="chips" data-chips="ch7.chips"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- the shell: the line continues as a bus; each remote plugs into it -->
+  <section class="shell gutter" aria-label="Details">
+    <div class="wrap lane">
+      <div class="track"><div class="rail"></div><i class="end" aria-hidden="true"></i></div>
+      <div class="plugs">
+        <article class="plug" data-remote="capabilities" aria-labelledby="r-caps">
+          <p class="tag mono">remote/capabilities</p>
+          <h2 id="r-caps" data-i18n="caps.title">What I do</h2>
+          <ul class="caps"></ul>
+          <div class="industries"><span class="k mono" data-i18n="caps.industriesLabel">Industries</span><ul class="chips"></ul></div>
+        </article>
+
+        <article class="plug" data-remote="principles" aria-labelledby="r-moves">
+          <p class="tag mono">remote/principles</p>
+          <h2 id="r-moves" data-i18n="moves.title">How I think</h2>
+          <div class="cycle"><div class="orbit"><ol class="ring"></ol><p class="hub mono" data-i18n="moves.hub">↻ and again</p></div></div>
+        </article>
+
+        <article class="plug" data-remote="voices" aria-labelledby="r-voices">
+          <p class="tag mono">remote/voices</p>
+          <h2 id="r-voices" data-i18n="voices.title">What others say</h2>
+          <ul class="letters"></ul>
+          <div class="pattern">
+            <p class="k mono" data-i18n="voices.patternLabel">What they keep saying</p>
+            <ul class="chips"></ul>
+          </div>
+        </article>
+
+        <article class="plug" aria-labelledby="r-contact">
+          <p class="tag mono">remote/contact</p>
+          <h2 id="r-contact" data-i18n="contact.title">Write to me</h2>
+          <p class="note" data-i18n="contact.lede"></p>
+          <div class="mail">
+            <code id="email">hbasheer@live.com</code>
+            <button type="button" id="copy" data-i18n="contact.copy">Copy address</button>
+          </div>
+          <p class="links mono">
+            <a href="https://github.com/tomavic">GitHub · tomavic</a>
+            <a href="https://www.linkedin.com/in/hatem-ahmad/">LinkedIn · hatem-ahmad</a>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="gutter">
+  <div class="wrap foot mono">
+    <span><svg viewBox="150 186 296 356" aria-hidden="true"><path transform="matrix(1,0,0,-1,240.4302,196.22644)" d="M0 0-76.99-58.099V-334.515L0-276.951V-193.01L93.208-128.317H.356V0" fill="var(--mark-red)"/><path transform="matrix(1,0,0,-1,431.8359,196.22644)" d="M0 0V-276.594L-76.455-334.515V-206.733H-170.02L-76.634-141.327V-57.208Z" fill="var(--mark-blue)"/></svg><span data-i18n="foot.copy">© 2026 Hatem Ahmad Basheer</span></span>
+    <span data-i18n="foot.made">Made with love in Cairo</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const GH = 'https://github.com/tomavic/';
+  const T = {
+    en: {
+      'ui.lang': 'Language', 'ui.theme': 'Theme', 'ui.auto': 'Auto', 'ui.light': 'Light', 'ui.dark': 'Dark',
+      'ui.tokens': 'Colour tokens', 'ui.blue': 'Blue', 'ui.red': 'Red',
+      'hero.eyebrow': 'Cairo · since 2013',
+      'hero.name': 'Hatem Ahmad',
+      'hero.role1': 'Senior Staff Software Engineer',
+      'hero.role2': 'Frontend Architect',
+      'hero.role3': 'Founder, Enigma Technology Lab',
+      'hero.thesis': 'I build the frontends that enterprise teams grow on, and I leave every codebase better than I found it.',
+
+      'ch1.years': '2008 – 2014', 'ch1.title': 'Mathematics first',
+      'ch1.body': 'I studied mathematics and computer science at Helwan University and taught maths before I wrote production code. My graduation project solved differential equations step by step and charted its error against the exact answer. I still work that way: compare, measure, then trust.',
+      'ch1.chips': ['BSc Mathematics & Computer Science, Helwan 2014', 'Space-weather data training, 2011'],
+
+      'ch2.years': '2013 – 2016', 'ch2.title': 'Then design',
+      'ch2.body': 'I learned the craft in Photoshop, Illustrator and hand-built websites. Grids, type and line still shape how I review a screen. The hummingbird here is one of my own drawings: one stroke, never lifted.',
+      'ch2.chips': ['Identity and print', 'Web design', 'WordPress'],
+
+      'ch3.years': '2016 – 2019', 'ch3.title': 'Phones, in three countries',
+      'ch3.body': 'Front-end developer at Indian Mesh in Chandigarh, JavaScript developer at Dirac Systems in Cairo, then senior cross-platform mobile developer at Al Rajhi Bank in Riyadh. At the bank I wrote the native bridge that adds a card to Apple Wallet from inside a hybrid app, and released it as open source.',
+      'ch3.chips': ['Ionic · Cordova', 'Objective-C', '*Listed in Ionic Native'],
+
+      'ch4.years': '2019 – 2020', 'ch4.title': 'The web at national scale',
+      'ch4.body': 'At GET Holding I built the booking, cart and ticket-assignment flows of Tazkarti, Egypt’s fan ID and ticketing platform for the Africa Cup of Nations 2019, in Arabic, English and French. At Aumet I moved a medical B2B marketplace to server-side rendering so search engines could find it.',
+      'ch4.chips': ['*AFCON 2019', 'Arabic, English, French', 'Angular Universal · NgRx'],
+
+      'ch5.years': '2020 – 2024', 'ch5.title': 'Leading the team',
+      'ch5.body': 'At VOIS, Vodafone’s shared-services company, I went from senior developer to Software Technical Lead. I built a shared Angular UI library on the brand design system, put quality gates into CI, and measured every portal before each planning cycle. I also hired, onboarded and mentored the engineers who build on it.',
+      'ch5.chips': ['*100% unit-test coverage', 'Frontend Guild Top Performer 2021/22', '*+25% delivery predictability'],
+
+      'ch6.years': '2024 – now', 'ch6.title': 'Architecting the platform',
+      'ch6.body': 'At Suez Canal Bank I design the micro-frontend platform that the bank’s corporate web apps grow on: an Nx monorepo, shared libraries released with semantic versions, Angular Signals at the core, and a component library documented in Arabic and English. Each team ships its part on its own release line.',
+      'ch6.chips': ['*99.9% reliability', '*−30% technical debt', '*10+ engineers upskilled'],
+
+      'ch7.years': '2018 – now', 'ch7.title': 'Founding the lab',
+      'ch7.body': 'I founded Enigma Technology Lab in Cairo for systems that nobody can safely change any more. Its method is the one this line has followed: read what is there, measure it, change one part at a time, and prove each step. It is a lab and not an agency, because a lab tests every claim.',
+      'ch7.chips': ['Founder', 'Cairo'],
+
+      'caps.title': 'What I do',
+      'caps.items': [
+        ['Frontend architecture', 'Angular from v2 to 20+, Signals and Standalone. Micro-frontends with versioned shared libraries. Nx monorepos.'],
+        ['Design systems', 'Brand design systems turned into documented component libraries.'],
+        ['Quality at scale', 'Unit and end-to-end tests, SonarQube gates, and CI/CD from commit to production.'],
+        ['Mobile', 'Cross-platform apps shipped to both stores, and a native Apple Pay plugin released as open source.'],
+        ['Arabic-first products', 'Right-to-left and multilingual apps for banking, ticketing and more. This page is one.'],
+        ['Leading teams', 'Hiring, onboarding programmes, mentoring, SAFe planning and upgrade roadmaps.']
+      ],
+      'caps.industriesLabel': 'Industries',
+      'caps.industries': ['Banking', 'Telecom', 'Health', 'Ticketing', 'E-commerce', 'ERP and POS', 'Food'],
+
+      'moves.title': 'How I think',
+      'moves.items': [
+        ['Map before building', 'The routes and screens for each role come first. Features come after.'],
+        ['Measure, then improve', 'Coverage, code smells and bundle size go into a table before any plan.'],
+        ['Phase it', 'Rescues and upgrades ship in stages that can each be tested alone.'],
+        ['Keep version one small', 'Add the feature when there are users who need it, not before.'],
+        ['Cite and demo', 'A proposal carries references and a working demo, not only an opinion.']
+      ],
+      'moves.hub': '↻ and again',
+
+      'voices.title': 'What others say',
+      'voices.items': [
+        ['quote', '2016 – 2017', '“I strongly recommend Hatem for any senior-level development position … He’s simply that good.”', 'Director, Indian Mesh · Chandigarh, India'],
+        ['quote', '2018 · translated from Arabic', '“Mastery in his work. Grace with people.”', 'Chairman, Dirac Systems'],
+        ['award', '2021/22', 'Frontend Guild Top Performer', 'VOIS · Vodafone. Promoted to Software Technical Lead in 2022.'],
+        ['peer', '2024', '“Hatem is not only a highly skilled front-end developer but also an outstanding team player. … He is a reliable and responsible team member who can be trusted to deliver high-quality work on time.”', 'Ahmed Abbas · Senior Frontend Developer, same team at VOIS'],
+        ['peer', '2023', '“… helping me and the whole team understand more about the intersection aspects between my role and his role … Hatem is definitely a gain to any team he joins.”', 'Aya Adel Kabudan · UX/UI Lead, same team at VOIS']
+      ],
+      'voices.patternLabel': 'What they keep saying',
+      'voices.strengths': [
+        'Takes feedback and improves fast',
+        'Checks the work before it ships',
+        'Explains technical work so non-experts understand it',
+        'Welcomes new people and helps them grow',
+        'Never stops learning'
+      ],
+
+      'contact.title': 'Write to me',
+      'contact.lede': 'For frontend architecture, building a team, or a system that needs rescuing.',
+      'contact.copy': 'Copy address', 'contact.copied': 'Copied', 'contact.selected': 'Selected, press copy',
+      'foot.copy': '© 2026 Hatem Ahmad Basheer',
+      'foot.made': 'Made with love in Cairo'
+    },
+
+    ar: {
+      'ui.lang': 'اللغة', 'ui.theme': 'المظهر', 'ui.auto': 'تلقائي', 'ui.light': 'فاتح', 'ui.dark': 'داكن',
+      'ui.tokens': 'ألوان التصميم', 'ui.blue': 'أزرق', 'ui.red': 'أحمر',
+      'hero.eyebrow': 'القاهرة · منذ 2013',
+      'hero.name': 'حاتم أحمد',
+      'hero.role1': 'مهندس برمجيات رئيسي أول',
+      'hero.role2': 'معماري واجهات أمامية',
+      'hero.role3': 'مؤسس Enigma Technology Lab',
+      'hero.thesis': 'أبني الواجهات الأمامية التي تنمو عليها فرق المؤسسات، وأترك كل قاعدة كود أفضل مما وجدتها.',
+
+      'ch1.years': '2008 – 2014', 'ch1.title': 'الرياضيات أولًا',
+      'ch1.body': 'درست الرياضيات وعلوم الحاسب في جامعة حلوان، ودرّست الرياضيات قبل أن أكتب كودًا للإنتاج. مشروع تخرجي حلّ المعادلات التفاضلية خطوة بخطوة، ورسم الخطأ مقارنةً بالحل الدقيق. وما زلت أعمل بالطريقة نفسها: أقارن، ثم أقيس، ثم أثق.',
+      'ch1.chips': ['بكالوريوس الرياضيات وعلوم الحاسب، حلوان 2014', 'تدريب على تحليل بيانات طقس الفضاء، 2011'],
+
+      'ch2.years': '2013 – 2016', 'ch2.title': 'ثم التصميم',
+      'ch2.body': 'تعلّمت الحرفة على Photoshop وIllustrator وعلى مواقع بنيتها بيدي. وما زالت الشبكات والحروف والخطوط تحدد كيف أراجع أي شاشة. الطائر الطنّان هنا من رسوماتي: خط واحد لا ينقطع.',
+      'ch2.chips': ['الهوية والمطبوعات', 'تصميم المواقع', 'WordPress'],
+
+      'ch3.years': '2016 – 2019', 'ch3.title': 'تطبيقات الجوال في ثلاث دول',
+      'ch3.body': 'مطوّر واجهات أمامية في Indian Mesh بمدينة تشانديغار، ثم مطوّر JavaScript في Dirac Systems بالقاهرة، ثم مطوّر أول لتطبيقات الجوال متعددة المنصات في مصرف الراجحي بالرياض. وفي المصرف كتبت الجسر الأصلي الذي يضيف البطاقة إلى Apple Wallet من داخل تطبيق هجين، ونشرته مفتوح المصدر.',
+      'ch3.chips': ['Ionic · Cordova', 'Objective-C', '*مُدرج في Ionic Native'],
+
+      'ch4.years': '2019 – 2020', 'ch4.title': 'الويب على مستوى وطني',
+      'ch4.body': 'في مجموعة GET القابضة بنيت مسارات الحجز وسلة الشراء وتخصيص التذاكر في «تذكرتي»، منصة بطاقة المشجع والتذاكر في مصر لكأس الأمم الأفريقية 2019، بالعربية والإنجليزية والفرنسية. وفي Aumet نقلت سوقًا طبيًا بين الشركات إلى العرض من جهة الخادم حتى تصل إليه محركات البحث.',
+      'ch4.chips': ['*كأس الأمم الأفريقية 2019', 'العربية والإنجليزية والفرنسية', 'Angular Universal · NgRx'],
+
+      'ch5.years': '2020 – 2024', 'ch5.title': 'قيادة الفريق',
+      'ch5.body': 'في VOIS، شركة الخدمات المشتركة التابعة لفودافون، تدرّجت من مطوّر أول إلى قائد تقني للبرمجيات. بنيت مكتبة واجهات Angular مشتركة على نظام تصميم العلامة، وأضفت بوابات جودة إلى خط التكامل المستمر، وقِست حالة كل منصة قبل كل دورة تخطيط. كما وظّفت المهندسين الذين يبنون عليها، وأهّلتهم ووجّهتهم.',
+      'ch5.chips': ['*تغطية اختبارات وحدات 100%', 'الأفضل أداءً في Frontend Guild ‏2021/22', '*‎+25%‎ في دقة توقّع التسليم'],
+
+      'ch6.years': '2024 – الآن', 'ch6.title': 'هندسة المنصة',
+      'ch6.body': 'في بنك قناة السويس أصمّم منصة الواجهات المصغّرة التي تنمو عليها تطبيقات البنك للشركات: مستودع Nx واحد، ومكتبات مشتركة تصدر بأرقام إصدار دلالية، وAngular Signals في القلب، ومكتبة مكوّنات موثّقة بالعربية والإنجليزية. ويُطلق كل فريق جزءه على خط إصدار خاص به.',
+      'ch6.chips': ['*موثوقية 99.9%', '*‎−30%‎ في الدين التقني', '*تأهيل أكثر من 10 مهندسين'],
+
+      'ch7.years': '2018 – الآن', 'ch7.title': 'تأسيس المعمل',
+      'ch7.body': 'أسّست Enigma Technology Lab في القاهرة من أجل الأنظمة التي لم يعد أحد قادرًا على تغييرها بأمان. ومنهجه هو نفسه الذي سار عليه هذا الخط: اقرأ ما هو موجود، وقِسه، وغيّر جزءًا واحدًا في كل مرة، وأثبت كل خطوة. إنه معمل لا وكالة، لأن المعمل يختبر كل ادعاء.',
+      'ch7.chips': ['المؤسس', 'القاهرة'],
+
+      'caps.title': 'ما أقدّمه',
+      'caps.items': [
+        ['هندسة الواجهات الأمامية', 'Angular من الإصدار 2 حتى 20 وما بعده، مع Signals وStandalone. واجهات مصغّرة بمكتبات مشتركة ذات إصدارات. مستودعات Nx الموحّدة.'],
+        ['أنظمة التصميم', 'أحوّل أنظمة تصميم العلامات التجارية إلى مكتبات مكوّنات موثّقة.'],
+        ['الجودة على نطاق واسع', 'اختبارات الوحدات والاختبارات الشاملة، وبوابات SonarQube، والتكامل والنشر المستمران من الإيداع حتى الإنتاج.'],
+        ['تطبيقات الجوال', 'تطبيقات متعددة المنصات منشورة على المتجرين، وإضافة أصلية لـ Apple Pay منشورة مفتوحة المصدر.'],
+        ['منتجات عربية أولًا', 'تطبيقات من اليمين إلى اليسار ومتعددة اللغات للبنوك والتذاكر وغيرها. وهذه الصفحة واحدة منها.'],
+        ['قيادة الفرق', 'التوظيف، وبرامج التأهيل، والتوجيه، وتخطيط SAFe، وخرائط طريق الترقية.']
+      ],
+      'caps.industriesLabel': 'القطاعات',
+      'caps.industries': ['البنوك', 'الاتصالات', 'الصحة', 'التذاكر', 'التجارة الإلكترونية', 'أنظمة ERP ونقاط البيع', 'الأغذية'],
+
+      'moves.title': 'كيف أفكّر',
+      'moves.items': [
+        ['ارسم الخريطة قبل البناء', 'المسارات والشاشات لكل دور تأتي أولًا، ثم الميزات.'],
+        ['قِس ثم حسّن', 'التغطية وروائح الكود وحجم الحزمة تدخل جدولًا قبل أي خطة.'],
+        ['قسّمها على مراحل', 'الإنقاذ والترقيات تُسلَّم على مراحل، وكل مرحلة تُختبر وحدها.'],
+        ['اجعل الإصدار الأول صغيرًا', 'أضف الميزة حين يوجد مستخدمون يحتاجونها، لا قبل ذلك.'],
+        ['استشهد وقدّم عرضًا', 'كل مقترح يحمل مراجع وعرضًا عمليًا، لا رأيًا فقط.']
+      ],
+      'moves.hub': '↻ ثم من جديد',
+
+      'voices.title': 'ماذا يقول الآخرون',
+      'voices.items': [
+        ['quote', '2016 – 2017 · مترجم', '«أوصي بحاتم بقوة لأي منصب تطوير رفيع المستوى … إنه ببساطة بهذه البراعة.»', 'مدير Indian Mesh · تشانديغار، الهند'],
+        ['quote', '2018', '«إتقان العمل وحسن المعاملة.»', 'رئيس مجلس إدارة Dirac Systems'],
+        ['award', '2021/22', 'الأفضل أداءً في Frontend Guild', 'VOIS · فودافون. ترقّى إلى قائد تقني للبرمجيات في 2022.'],
+        ['peer', '2024 · مترجمة', '«حاتم ليس مطوّر واجهات أمامية شديد المهارة فحسب، بل عضو فريق متميّز أيضًا. … عضو فريق موثوق ومسؤول يمكن الاعتماد عليه في تسليم عمل عالي الجودة في موعده.»', 'Ahmed Abbas · مطوّر واجهات أمامية أول، الفريق نفسه في VOIS'],
+        ['peer', '2023 · مترجمة', '«… ساعدني وساعد الفريق كله على فهم نقاط التقاطع بين دوري ودوره … حاتم مكسب لأي فريق ينضم إليه.»', 'Aya Adel Kabudan · قائدة تصميم UX/UI، الفريق نفسه في VOIS']
+      ],
+      'voices.patternLabel': 'ما يكررونه',
+      'voices.strengths': [
+        'يتقبّل الملاحظات ويتحسّن بسرعة',
+        'يراجع العمل قبل أن يُطلقه',
+        'يشرح العمل التقني بحيث يفهمه غير المتخصصين',
+        'يرحّب بالقادمين الجدد ويساعدهم على النمو',
+        'لا يتوقف عن التعلّم'
+      ],
+
+      'contact.title': 'راسلني',
+      'contact.lede': 'لهندسة الواجهات الأمامية، أو بناء فريق، أو نظام يحتاج إلى إنقاذ.',
+      'contact.copy': 'انسخ العنوان', 'contact.copied': 'تم النسخ', 'contact.selected': 'تم التحديد، اضغط نسخ',
+      'foot.copy': '© 2026 حاتم أحمد بشير',
+      'foot.made': 'صُنع بحب في القاهرة'
+    }
+  };
+
+  /* self-check: both languages carry the same keys and list shapes */
+  const shape = o => Array.isArray(o) ? o.map(shape) : typeof o === 'object' ? Object.keys(o).sort().map(k => [k, shape(o[k])]) : 's';
+  console.assert(JSON.stringify(shape(T.en)) === JSON.stringify(shape(T.ar)), 'i18n: en and ar differ in keys or list lengths');
+  document.querySelectorAll('[data-i18n],[data-i18n-html],[data-chips]').forEach(el => {
+    const k = el.dataset.i18n || el.dataset.i18nHtml || el.dataset.chips;
+    console.assert(k in T.en && k in T.ar, 'i18n: missing key ' + k);
+  });
+
+  const root = document.documentElement;
+  const store = {
+    get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+  // a leading * marks a chip that carries a result
+  const chip = s => { const li = el('li', s[0] === '*' ? 'hit' : '', s.replace(/^\*/, '')); return li; };
+  let L = T.en;
+
+  const remotes = {
+    capabilities: card => {
+      card.querySelector('.caps').replaceChildren(...L['caps.items'].map(([t, d]) => { const li = el('li'); li.append(el('h3', '', t), el('p', '', d)); return li; }));
+      card.querySelector('.industries .chips').replaceChildren(...L['caps.industries'].map(chip));
+    },
+    principles: card => {
+      card.querySelector('.ring').replaceChildren(...L['moves.items'].map(([t, d], i, all) => {
+        const li = el('li'), txt = el('div', 'txt');
+        li.style.setProperty('--a', (-90 + i * 360 / all.length) + 'deg');
+        txt.append(el('h3', '', t), el('p', '', d)); li.append(txt);
+        return li;
+      }));
+    },
+    voices: card => {
+      // type: quote (letter or certificate), award (recognition), peer (public LinkedIn recommendation)
+      card.querySelector('.letters').replaceChildren(...L['voices.items'].map(([type, kind, quote, who]) => {
+        const li = el('li', 'letter ' + type + (quote.length > 120 ? ' long' : ''));
+        li.append(el('span', 'kind mono', kind), el('p', 'q' + (quote.length < 48 ? ' big' : ''), quote), el('span', 'who mono', who));
+        return li;
+      }));
+      card.querySelector('.pattern .chips').replaceChildren(...L['voices.strengths'].map(s => el('li', '', s)));
+    }
+  };
+
+  function render() {
+    document.querySelectorAll('[data-i18n]').forEach(n => { n.textContent = L[n.dataset.i18n]; });
+    document.querySelectorAll('[data-i18n-html]').forEach(n => { n.innerHTML = L[n.dataset.i18nHtml]; });
+    document.querySelectorAll('[data-chips]').forEach(n => n.replaceChildren(...L[n.dataset.chips].map(chip)));
+    document.querySelectorAll('[data-remote]').forEach(card => remotes[card.dataset.remote](card));
+    document.querySelectorAll('.seg label[title]').forEach(l => { l.title = l.querySelector('.sr').textContent; });
+  }
+
+  function setLang(lang) {
+    L = T[lang];
+    root.lang = lang; root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.getElementById('lang-' + lang).checked = true;
+    render();
+  }
+  function setTheme(t) {
+    if (t === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', t);
+    document.getElementById('theme-' + t).checked = true;
+  }
+  function setAccent(a) {
+    if (a === 'blue') root.removeAttribute('data-accent'); else root.setAttribute('data-accent', a);
+    document.getElementById('accent-' + a).checked = true;
+  }
+
+  const lang0 = location.hash === '#ar' ? 'ar' : (store.get('hl.lang') || 'en');
+  setLang(T[lang0] ? lang0 : 'en');
+  const theme0 = store.get('hl.theme') || root.getAttribute('data-theme') || 'auto';
+  setTheme(['auto', 'light', 'dark'].includes(theme0) ? theme0 : 'auto');
+  const accent0 = store.get('hl.accent');
+  setAccent(['blue', 'red'].includes(accent0) ? accent0 : 'blue');
+
+  document.getElementById('f-lang').addEventListener('change', e => { setLang(e.target.value); store.set('hl.lang', e.target.value); });
+  document.getElementById('f-theme').addEventListener('change', e => { setTheme(e.target.value); store.set('hl.theme', e.target.value); });
+  document.getElementById('f-accent').addEventListener('change', e => { setAccent(e.target.value); store.set('hl.accent', e.target.value); });
+
+  /* ---------- the pen: draws the line as the reader scrolls ----------
+     A pen line sits ~62% down the screen. Every drawing and rail below the hero fills
+     to the point the pen has passed. Multi-part drawings are split into their strokes
+     and traced one after another, and progress eases toward its target so wheel steps glide. */
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const segs = [];
+    document.querySelectorAll('.chapter .track, .shell .track').forEach(track => {
+      const svg = track.querySelector('svg');
+      if (svg) {
+        const parts = [];
+        svg.querySelectorAll('.draw').forEach(path => {
+          path.getAttribute('d').split(/(?=M)/).forEach(d => {
+            const q = path.cloneNode();
+            q.setAttribute('d', d.trim()); q.removeAttribute('pathLength');
+            path.before(q); parts.push({ el: q, len: q.getTotalLength(), drawn: 0 });
+          });
+          path.remove();
+        });
+        segs.push({ kind: 'svg', el: svg, parts, total: parts.reduce((a, b) => a + b.len, 0), cur: 0 });
+      }
+      const rail = track.querySelector('.rail');
+      if (rail) segs.push({ kind: 'rail', el: rail, cur: 0 });
+    });
+
+    const paint = sg => {
+      if (sg.kind === 'rail') { sg.el.style.clipPath = 'inset(0 0 ' + ((1 - sg.cur) * 100) + '% 0)'; return; }
+      let left = sg.cur * sg.total;
+      sg.parts.forEach(pt => {
+        const d = Math.max(0, Math.min(pt.len, left)); left -= pt.len;
+        pt.drawn = d;
+        pt.el.style.strokeDasharray = pt.len + ' ' + pt.len;
+        pt.el.style.strokeDashoffset = pt.len - d;
+        pt.el.style.opacity = d > 0 ? 1 : 0;
+      });
+    };
+    // screen position of the pen tip on a segment
+    const tip = sg => {
+      const r = sg.el.getBoundingClientRect();
+      if (sg.kind === 'rail') return [r.left + r.width / 2, r.top + sg.cur * r.height];
+      const pt = [...sg.parts].reverse().find(x => x.drawn > 0);
+      if (!pt) return null;
+      const at = pt.el.getPointAtLength(pt.drawn);
+      const u = new DOMPoint(at.x, at.y).matrixTransform(sg.el.getScreenCTM().inverse().multiply(pt.el.getScreenCTM()));
+      const x = (u.x / 200) * r.width;
+      return [root.dir === 'rtl' ? r.right - x : r.left + x, r.top + (u.y / 260) * r.height];
+    };
+
+    const pen = el('i', 'pen'); pen.setAttribute('aria-hidden', 'true'); document.body.append(pen);
+    const plugs = [...document.querySelectorAll('.plug')], foot = document.querySelector('.foot');
+    let last = 0, running = false;
+    const frame = now => {
+      const dt = last ? Math.min(64, now - last) : 16; last = now;
+      // measured from the footer, so it works whichever element does the scrolling
+      const vh = innerHeight, rest = foot.getBoundingClientRect().bottom - vh;
+      // near the bottom of the page the pen line slides down so the last rail can finish
+      const line = vh * (0.62 + 0.38 * Math.max(0, Math.min(1, 1 - rest / (vh * 0.5))));
+      const k = 1 - Math.exp(-dt / 110);
+      let moving = false, active = null;
+      segs.forEach(sg => {
+        const r = sg.el.getBoundingClientRect();
+        const target = Math.max(0, Math.min(1, (line - r.top) / r.height));
+        const next = Math.abs(target - sg.cur) < 0.0005 ? target : sg.cur + (target - sg.cur) * k;
+        if (next !== sg.cur) { sg.cur = next; paint(sg); }
+        if (sg.cur !== target) moving = true;
+        if (sg.cur > 0 && sg.cur < 1) active = sg;
+      });
+      plugs.forEach(pl => pl.classList.toggle('lit', pl.getBoundingClientRect().top + 12 < line));
+      const t = active && tip(active);
+      pen.classList.toggle('on', !!t);
+      if (t) pen.style.transform = 'translate3d(' + t[0] + 'px,' + t[1] + 'px,0)';
+      if (moving) requestAnimationFrame(frame); else { running = false; last = 0; }
+    };
+    const kick = () => { if (!running) { running = true; requestAnimationFrame(frame); } };
+    segs.forEach(paint); kick();
+    // capture: scroll events from a scrolling body or wrapper don't bubble to window
+    document.addEventListener('scroll', kick, { passive: true, capture: true });
+    addEventListener('resize', kick);
+    document.getElementById('f-lang').addEventListener('change', kick);
+  }
+
+  /* copy address */
+  const btn = document.getElementById('copy');
+  btn.addEventListener('click', () => {
+    const text = document.getElementById('email').textContent;
+    const done = () => { btn.textContent = L['contact.copied']; setTimeout(() => btn.textContent = L['contact.copy'], 1800); };
+    const fallback = () => {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = L['contact.selected'];
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
