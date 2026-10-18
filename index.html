@@ -142,10 +142,15 @@ ul { padding: 0; list-style: none; }
   font-variation-settings: "wdth" 75, "opsz" 96; letter-spacing: -0.02em;
 }
 :lang(ar) .hero h1 { line-height: 1.25; letter-spacing: 0; font-variation-settings: normal; }
-.roles { display: flex; flex-wrap: wrap; gap: 0.25rem 0; color: var(--muted); text-transform: uppercase; }
-.roles span:not(:last-child)::after { content: "·"; padding-inline: 0.7rem; color: var(--rule); }
-.thesis { font-size: var(--s2); line-height: 1.3; max-width: 30ch; font-family: var(--f-display); font-weight: 500; font-variation-settings: "opsz" 36; }
-:lang(ar) .thesis { line-height: 1.6; font-size: var(--s1); max-width: 40ch; }
+.roles { display: flex; flex-wrap: wrap; gap: 0.35rem 0; font-family: var(--f-display); font-size: var(--s1); font-weight: 650; line-height: 1.3; color: var(--fg); }
+.roles span:first-child { color: var(--accent); }
+.roles span:not(:last-child)::after { content: "·"; padding-inline: 0.7rem; color: var(--accent); }
+.thesis {
+  font-size: clamp(1.6rem, 3.6vw, 2.35rem); line-height: 1.25; max-width: 32ch; font-family: var(--f-display); font-weight: 650;
+  font-variation-settings: "opsz" 48; color: var(--fg);
+  border-inline-start: 4px solid var(--accent); padding-inline-start: 1.1rem; margin-block-start: 0.4rem;
+}
+:lang(ar) .thesis { line-height: 1.6; font-size: clamp(1.35rem, 3vw, 1.9rem); max-width: 36ch; }
 
 /* ---------- chapters ---------- */
 .ch-body { display: grid; gap: 0.9rem; align-content: start; padding-block: 0 clamp(3.5rem, 9vw, 6.5rem); min-width: 0; }
@@ -159,6 +164,36 @@ ul { padding: 0; list-style: none; }
 .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; padding-top: 0.3rem; }
 .chips li { border: 1px solid var(--rule); border-radius: 3px; padding: 0.2rem 0.55rem; font-family: var(--f-mono); font-size: 0.78rem; color: var(--fg); background: var(--panel); }
 .chips li.hit { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+/* achievements: the pen strikes a highlighter through them as it passes */
+.win {
+  font-family: var(--f-display); font-weight: 700; font-size: 1.06em; color: var(--fg); padding-inline: 0.15em; border-radius: 2px;
+  background: linear-gradient(color-mix(in srgb, var(--accent) 32%, transparent), color-mix(in srgb, var(--accent) 32%, transparent)) no-repeat 0 90% / 100% 0.5em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+[dir="rtl"] .win { background-position: 100% 90%; }
+@media (prefers-reduced-motion: no-preference) {
+  .win { transition: background-size .9s cubic-bezier(.6,.1,.2,1); }
+  .win:not(.on) { background-size: 0% 0.5em; }
+}
+/* skills: glowing tags */
+.chips.skills li, .chips.skills li.hit {
+  border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent); border-radius: 999px; padding-inline: 0.7rem;
+  color: var(--accent); background: var(--accent-soft);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 35%, transparent), inset 0 0 6px color-mix(in srgb, var(--accent) 15%, transparent);
+  transition: box-shadow .2s ease;
+}
+.chips.skills li:hover { box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 60%, transparent), inset 0 0 6px color-mix(in srgb, var(--accent) 20%, transparent); }
+/* projects built in each stage */
+.projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0.6rem; max-width: 62ch; }
+.projects li { border: 1px solid var(--rule); border-inline-start: 3px solid var(--accent); border-radius: 4px; background: var(--panel); padding: 0.7rem 0.9rem; display: grid; gap: 0.25rem; min-width: 0; }
+.projects .p-name { font-family: var(--f-display); font-weight: 700; font-size: 1.05rem; line-height: 1.3; color: var(--fg); text-decoration: none; }
+.projects a.p-name { color: var(--accent); }
+.projects a.p-name::after { content: " ↗"; font-size: 0.85em; }
+.projects a.p-name:hover { text-decoration: underline; }
+.projects p { color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+.projects .p-badge { justify-self: start; margin-top: 0.2rem; border: 1px solid var(--accent); border-radius: 3px; padding: 0.15rem 0.5rem; font-size: 0.75rem; color: var(--accent); background: var(--accent-soft); text-decoration: none; }
+.projects .p-badge::after { content: " ↗"; }
+.projects .p-badge:hover { text-decoration: underline; }
 
 /* line animation: drawn by scroll where supported, fully drawn otherwise */
 @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
@@ -175,7 +210,7 @@ ul { padding: 0; list-style: none; }
 .plugs { display: grid; gap: clamp(4rem, 9vw, 6.5rem); padding-block: 0 2.5rem; min-width: 0; }
 .plug { position: relative; display: grid; gap: 1.25rem; align-content: start; min-width: 0; }
 .plug::before {
-  content: ""; position: absolute; top: 0.15rem;
+  content: ""; position: absolute; top: calc(var(--s3) * 0.525 - 9px); /* centred on the heading's first line */
   inset-inline-start: calc(-1 * (var(--gap) + var(--track) / 2) - 9px);
   width: 18px; height: 18px; border-radius: 50%;
   border: var(--rail) solid var(--accent); background: var(--bg);
@@ -188,7 +223,6 @@ ul { padding: 0; list-style: none; }
   box-shadow: 0 0 0 5px var(--accent-soft), 0 0 18px color-mix(in srgb, var(--accent) 60%, transparent);
 }
 .pen.on { opacity: 1; }
-.tag { color: var(--accent); }
 .plug h2 {
   font-family: var(--f-display); font-size: var(--s3); line-height: 1.05; font-weight: 700;
   font-variation-settings: "wdth" 85, "opsz" 72; letter-spacing: -0.01em;
@@ -327,7 +361,7 @@ button:hover { background: var(--accent); }
       <div class="hero-body">
         <p class="eyebrow mono" data-i18n="hero.eyebrow">Cairo · since 2013</p>
         <h1 data-i18n="hero.name">Hatem Ahmad</h1>
-        <p class="roles mono">
+        <p class="roles">
           <span data-i18n="hero.role1">Senior Staff Software Engineer</span>
           <span data-i18n="hero.role2">Frontend Architect</span>
           <span data-i18n="hero.role3">Founder, Enigma Technology Lab</span>
@@ -350,8 +384,8 @@ button:hover { background: var(--accent); }
       <div class="ch-body">
         <p class="years mono num" data-i18n="ch1.years">2008 – 2014</p>
         <h2 id="ch1" data-i18n="ch1.title">Mathematics first</h2>
-        <p data-i18n="ch1.body"></p>
-        <ul class="chips" data-chips="ch1.chips"></ul>
+        <p data-i18n-html="ch1.body"></p>
+        <ul class="chips skills" data-chips="ch1.skills" aria-label="Skills"></ul>
       </div>
     </div>
   </section>
@@ -373,8 +407,8 @@ button:hover { background: var(--accent); }
       <div class="ch-body">
         <p class="years mono num" data-i18n="ch2.years">2013 – 2016</p>
         <h2 id="ch2" data-i18n="ch2.title">Then design</h2>
-        <p data-i18n="ch2.body"></p>
-        <ul class="chips" data-chips="ch2.chips"></ul>
+        <p data-i18n-html="ch2.body"></p>
+        <ul class="chips skills" data-chips="ch2.skills" aria-label="Skills"></ul>
       </div>
     </div>
   </section>
@@ -391,8 +425,9 @@ button:hover { background: var(--accent); }
       <div class="ch-body">
         <p class="years mono num" data-i18n="ch3.years">2016 – 2019</p>
         <h2 id="ch3" data-i18n="ch3.title">Phones, in three countries</h2>
-        <p data-i18n="ch3.body"></p>
-        <ul class="chips" data-chips="ch3.chips"></ul>
+        <p data-i18n-html="ch3.body"></p>
+        <ul class="projects" data-projects="ch3.projects"></ul>
+        <ul class="chips skills" data-chips="ch3.skills" aria-label="Skills"></ul>
       </div>
     </div>
   </section>
@@ -409,8 +444,9 @@ button:hover { background: var(--accent); }
       <div class="ch-body">
         <p class="years mono num" data-i18n="ch4.years">2019 – 2020</p>
         <h2 id="ch4" data-i18n="ch4.title">The web at national scale</h2>
-        <p data-i18n="ch4.body"></p>
-        <ul class="chips" data-chips="ch4.chips"></ul>
+        <p data-i18n-html="ch4.body"></p>
+        <ul class="projects" data-projects="ch4.projects"></ul>
+        <ul class="chips skills" data-chips="ch4.skills" aria-label="Skills"></ul>
       </div>
     </div>
   </section>
@@ -427,8 +463,9 @@ button:hover { background: var(--accent); }
       <div class="ch-body">
         <p class="years mono num" data-i18n="ch5.years">2020 – 2024</p>
         <h2 id="ch5" data-i18n="ch5.title">Leading the team</h2>
-        <p data-i18n="ch5.body"></p>
-        <ul class="chips" data-chips="ch5.chips"></ul>
+        <p data-i18n-html="ch5.body"></p>
+        <ul class="projects" data-projects="ch5.projects"></ul>
+        <ul class="chips skills" data-chips="ch5.skills" aria-label="Skills"></ul>
       </div>
     </div>
   </section>
@@ -445,8 +482,9 @@ button:hover { background: var(--accent); }
       <div class="ch-body">
         <p class="years mono num" data-i18n="ch6.years">2024 – now</p>
         <h2 id="ch6" data-i18n="ch6.title">Architecting the platform</h2>
-        <p data-i18n="ch6.body"></p>
-        <ul class="chips" data-chips="ch6.chips"></ul>
+        <p data-i18n-html="ch6.body"></p>
+        <ul class="projects" data-projects="ch6.projects"></ul>
+        <ul class="chips skills" data-chips="ch6.skills" aria-label="Skills"></ul>
       </div>
     </div>
   </section>
@@ -463,8 +501,8 @@ button:hover { background: var(--accent); }
       <div class="ch-body">
         <p class="years mono num" data-i18n="ch7.years">2018 – now</p>
         <h2 id="ch7" data-i18n="ch7.title">Founding the lab</h2>
-        <p data-i18n="ch7.body"></p>
-        <ul class="chips" data-chips="ch7.chips"></ul>
+        <p data-i18n-html="ch7.body"></p>
+        <ul class="chips skills" data-chips="ch7.skills" aria-label="Skills"></ul>
       </div>
     </div>
   </section>
@@ -475,20 +513,17 @@ button:hover { background: var(--accent); }
       <div class="track"><div class="rail"></div><i class="end" aria-hidden="true"></i></div>
       <div class="plugs">
         <article class="plug" data-remote="capabilities" aria-labelledby="r-caps">
-          <p class="tag mono">remote/capabilities</p>
           <h2 id="r-caps" data-i18n="caps.title">What I do</h2>
           <ul class="caps"></ul>
           <div class="industries"><span class="k mono" data-i18n="caps.industriesLabel">Industries</span><ul class="chips"></ul></div>
         </article>
 
         <article class="plug" data-remote="principles" aria-labelledby="r-moves">
-          <p class="tag mono">remote/principles</p>
           <h2 id="r-moves" data-i18n="moves.title">How I think</h2>
           <div class="cycle"><div class="orbit"><ol class="ring"></ol><p class="hub mono" data-i18n="moves.hub">↻ and again</p></div></div>
         </article>
 
         <article class="plug" data-remote="voices" aria-labelledby="r-voices">
-          <p class="tag mono">remote/voices</p>
           <h2 id="r-voices" data-i18n="voices.title">What others say</h2>
           <ul class="letters"></ul>
           <div class="pattern">
@@ -498,7 +533,6 @@ button:hover { background: var(--accent); }
         </article>
 
         <article class="plug" aria-labelledby="r-contact">
-          <p class="tag mono">remote/contact</p>
           <h2 id="r-contact" data-i18n="contact.title">Write to me</h2>
           <p class="note" data-i18n="contact.lede"></p>
           <div class="mail">
@@ -525,6 +559,8 @@ button:hover { background: var(--accent); }
 <script>
 (() => {
   const GH = 'https://github.com/tomavic/';
+  // Ionic Native is now Awesome Cordova Plugins; ionicframework.com/docs/native/* redirects there
+  const IONIC = 'https://danielsogl.gitbook.io/awesome-cordova-plugins/plugins/plugins/apple-wallet';
   const T = {
     en: {
       'ui.lang': 'Language', 'ui.theme': 'Theme', 'ui.auto': 'Auto', 'ui.light': 'Light', 'ui.dark': 'Dark',
@@ -537,32 +573,49 @@ button:hover { background: var(--accent); }
       'hero.thesis': 'I build the frontends that enterprise teams grow on, and I leave every codebase better than I found it.',
 
       'ch1.years': '2008 – 2014', 'ch1.title': 'Mathematics first',
-      'ch1.body': 'I studied mathematics and computer science at Helwan University and taught maths before I wrote production code. My graduation project solved differential equations step by step and charted its error against the exact answer. I still work that way: compare, measure, then trust.',
-      'ch1.chips': ['BSc Mathematics & Computer Science, Helwan 2014', 'Space-weather data training, 2011'],
+      'ch1.body': 'I studied mathematics and computer science at Helwan University, graduating with a <b class="win">BSc in 2014</b> after space-weather data training in 2011, and I taught maths before I wrote production code. My graduation project solved differential equations step by step and charted its error against the exact answer. I still work that way: compare, measure, then trust.',
+      'ch1.skills': ['Numerical methods', 'Differential equations', 'Data analysis', 'Teaching'],
 
       'ch2.years': '2013 – 2016', 'ch2.title': 'Then design',
-      'ch2.body': 'I learned the craft in Photoshop, Illustrator and hand-built websites. Grids, type and line still shape how I review a screen. The hummingbird here is one of my own drawings: one stroke, never lifted.',
-      'ch2.chips': ['Identity and print', 'Web design', 'WordPress'],
+      'ch2.body': 'I learned the craft designing identities, print and websites in Photoshop and Illustrator, hand-built or on WordPress. Grids, type and line still shape how I review a screen. The hummingbird here is one of my own drawings: one stroke, never lifted.',
+      'ch2.skills': ['Photoshop', 'Illustrator', 'HTML · CSS', 'WordPress', 'Typography'],
 
       'ch3.years': '2016 – 2019', 'ch3.title': 'Phones, in three countries',
-      'ch3.body': 'Front-end developer at Indian Mesh in Chandigarh, JavaScript developer at Dirac Systems in Cairo, then senior cross-platform mobile developer at Al Rajhi Bank in Riyadh. At the bank I wrote the native bridge that adds a card to Apple Wallet from inside a hybrid app, and released it as open source.',
-      'ch3.chips': ['Ionic · Cordova', 'Objective-C', '*Listed in Ionic Native'],
+      'ch3.body': 'Front-end developer at Indian Mesh in Chandigarh, where I took one ordering app through <b class="win">5 generations</b> of mobile stacks; JavaScript developer at Dirac Systems in Cairo, where I was <b class="win">promoted to acting tech lead</b>; then senior cross-platform mobile developer at Al Rajhi Bank in Riyadh. At the bank I wrote the native bridge that adds a card to Apple Wallet from inside a hybrid app, and released it as open source.',
+      'ch3.projects': [
+        ['Mink Foodiee', 'Indian Mesh · a restaurant ordering app, taken through five generations of mobile stacks.', ''],
+        ['Mobile POS · ESS HR app', 'Dirac Systems · a point-of-sale web app and an employee self-service mobile app.', ''],
+        ['cordova-apple-wallet', 'Al Rajhi Bank · adds the bank’s cards to Apple Wallet from inside the Al Mubasher app. Open source.', GH + 'cordova-apple-wallet', 'Listed in Ionic Native', IONIC]
+      ],
+      'ch3.skills': ['Ionic', 'Cordova', 'AngularJS', 'Angular', 'Objective-C', 'Apple Pay · PassKit', 'Firebase'],
 
       'ch4.years': '2019 – 2020', 'ch4.title': 'The web at national scale',
-      'ch4.body': 'At GET Holding I built the booking, cart and ticket-assignment flows of Tazkarti, Egypt’s fan ID and ticketing platform for the Africa Cup of Nations 2019, in Arabic, English and French. At Aumet I moved a medical B2B marketplace to server-side rendering so search engines could find it.',
-      'ch4.chips': ['*AFCON 2019', 'Arabic, English, French', 'Angular Universal · NgRx'],
+      'ch4.body': 'At GET Holding I built the booking, cart and ticket-assignment flows of Tazkarti, <b class="win">Egypt’s first fan ID</b> and the ticketing platform for the Africa Cup of Nations 2019, in Arabic, English and French. At Aumet I moved a medical B2B marketplace to server-side rendering so search engines could find it.',
+      'ch4.projects': [
+        ['Tazkarti', 'GET Holding · Egypt’s fan ID and ticketing platform for AFCON 2019.', 'https://www.tazkarti.com/'],
+        ['Aumet business portal', 'Aumet · a server-rendered medical B2B marketplace, plus its admin dashboard.', 'https://aumet.com/']
+      ],
+      'ch4.skills': ['Angular', 'Angular Universal · SSR', 'NgRx', 'RxJS', 'PrimeNG', 'i18n · RTL', 'SEO · PWA'],
 
       'ch5.years': '2020 – 2024', 'ch5.title': 'Leading the team',
-      'ch5.body': 'At VOIS, Vodafone’s shared-services company, I went from senior developer to Software Technical Lead. I built a shared Angular UI library on the brand design system, put quality gates into CI, and measured every portal before each planning cycle. I also hired, onboarded and mentored the engineers who build on it.',
-      'ch5.chips': ['*100% unit-test coverage', 'Frontend Guild Top Performer 2021/22', '*+25% delivery predictability'],
+      'ch5.body': 'At VOIS, Vodafone’s shared-services company, I went from senior developer to Software Technical Lead and was named <b class="win">Frontend Guild Top Performer 2021/22</b>. I built a shared Angular UI library on the brand design system and put quality gates into CI, and the Easy Ticket portals reached <b class="win">100% unit-test coverage</b>. Estimating with SAFe made delivery <b class="win">25% more predictable</b>. I also hired and mentored the engineers who build on it, and designed their <b class="win">30-60-90 day onboarding</b>.',
+      'ch5.projects': [
+        ['Easy Ticket', 'Vodafone Germany Enterprise · incident portals for business customers: guest, expert and ticket tracker.', 'https://vodafone.de/1234'],
+        ['brix UI library', 'Vodafone · the shared Angular component library on the brand design system.', '']
+      ],
+      'ch5.skills': ['Angular', 'NgRx', 'RxJS', 'Angular Material', 'Micro-frontends', 'Jenkins', 'SonarQube', 'Karma · Jasmine', 'SAFe'],
 
       'ch6.years': '2024 – now', 'ch6.title': 'Architecting the platform',
-      'ch6.body': 'At Suez Canal Bank I design the micro-frontend platform that the bank’s corporate web apps grow on: an Nx monorepo, shared libraries released with semantic versions, Angular Signals at the core, and a component library documented in Arabic and English. Each team ships its part on its own release line.',
-      'ch6.chips': ['*99.9% reliability', '*−30% technical debt', '*10+ engineers upskilled'],
+      'ch6.body': 'At Suez Canal Bank I design the micro-frontend platform that the bank’s corporate web apps grow on: an Nx monorepo, shared libraries released with semantic versions, Angular Signals at the core, and a component library documented in Arabic and English. Each team ships its part on its own release line. The platform runs at <b class="win">99.9% reliability</b>, SonarQube standards and reviews cut technical debt by <b class="win">30%</b>, and I coach <b class="win">10+ engineers</b> in weekly sessions.',
+      'ch6.projects': [
+        ['SCB Business banking', 'Suez Canal Bank · the corporate online-banking portal, built on the platform.', 'https://business.scbank.com.eg/login'],
+        ['SCB Core FE', 'Suez Canal Bank · the Nx micro-frontend platform and its documented component library.', '']
+      ],
+      'ch6.skills': ['Angular Signals', 'Standalone', 'NgRx Signals', 'Nx', 'Micro-frontends', 'PrimeNG', 'Tailwind', 'Transloco', 'Jest', 'Playwright', 'Azure DevOps'],
 
       'ch7.years': '2018 – now', 'ch7.title': 'Founding the lab',
       'ch7.body': 'I founded Enigma Technology Lab in Cairo for systems that nobody can safely change any more. Its method is the one this line has followed: read what is there, measure it, change one part at a time, and prove each step. It is a lab and not an agency, because a lab tests every claim.',
-      'ch7.chips': ['Founder', 'Cairo'],
+      'ch7.skills': ['Code audits', 'Legacy modernisation', 'Phased migrations', 'Team building'],
 
       'caps.title': 'What I do',
       'caps.items': [
@@ -621,32 +674,49 @@ button:hover { background: var(--accent); }
       'hero.thesis': 'أبني الواجهات الأمامية التي تنمو عليها فرق المؤسسات، وأترك كل قاعدة كود أفضل مما وجدتها.',
 
       'ch1.years': '2008 – 2014', 'ch1.title': 'الرياضيات أولًا',
-      'ch1.body': 'درست الرياضيات وعلوم الحاسب في جامعة حلوان، ودرّست الرياضيات قبل أن أكتب كودًا للإنتاج. مشروع تخرجي حلّ المعادلات التفاضلية خطوة بخطوة، ورسم الخطأ مقارنةً بالحل الدقيق. وما زلت أعمل بالطريقة نفسها: أقارن، ثم أقيس، ثم أثق.',
-      'ch1.chips': ['بكالوريوس الرياضيات وعلوم الحاسب، حلوان 2014', 'تدريب على تحليل بيانات طقس الفضاء، 2011'],
+      'ch1.body': 'درست الرياضيات وعلوم الحاسب في جامعة حلوان وتخرّجت <b class="win">ببكالوريوس عام 2014</b> بعد تدريب على تحليل بيانات طقس الفضاء عام 2011، ودرّست الرياضيات قبل أن أكتب كودًا للإنتاج. مشروع تخرجي حلّ المعادلات التفاضلية خطوة بخطوة، ورسم الخطأ مقارنةً بالحل الدقيق. وما زلت أعمل بالطريقة نفسها: أقارن، ثم أقيس، ثم أثق.',
+      'ch1.skills': ['الطرق العددية', 'المعادلات التفاضلية', 'تحليل البيانات', 'التدريس'],
 
       'ch2.years': '2013 – 2016', 'ch2.title': 'ثم التصميم',
-      'ch2.body': 'تعلّمت الحرفة على Photoshop وIllustrator وعلى مواقع بنيتها بيدي. وما زالت الشبكات والحروف والخطوط تحدد كيف أراجع أي شاشة. الطائر الطنّان هنا من رسوماتي: خط واحد لا ينقطع.',
-      'ch2.chips': ['الهوية والمطبوعات', 'تصميم المواقع', 'WordPress'],
+      'ch2.body': 'تعلّمت الحرفة بتصميم الهويات والمطبوعات والمواقع على Photoshop وIllustrator، بنيتها بيدي أو على WordPress. وما زالت الشبكات والحروف والخطوط تحدد كيف أراجع أي شاشة. الطائر الطنّان هنا من رسوماتي: خط واحد لا ينقطع.',
+      'ch2.skills': ['Photoshop', 'Illustrator', 'HTML · CSS', 'WordPress', 'الطباعة والخطوط'],
 
       'ch3.years': '2016 – 2019', 'ch3.title': 'تطبيقات الجوال في ثلاث دول',
-      'ch3.body': 'مطوّر واجهات أمامية في Indian Mesh بمدينة تشانديغار، ثم مطوّر JavaScript في Dirac Systems بالقاهرة، ثم مطوّر أول لتطبيقات الجوال متعددة المنصات في مصرف الراجحي بالرياض. وفي المصرف كتبت الجسر الأصلي الذي يضيف البطاقة إلى Apple Wallet من داخل تطبيق هجين، ونشرته مفتوح المصدر.',
-      'ch3.chips': ['Ionic · Cordova', 'Objective-C', '*مُدرج في Ionic Native'],
+      'ch3.body': 'مطوّر واجهات أمامية في Indian Mesh بمدينة تشانديغار، حيث نقلت تطبيق طلبات واحدًا عبر <b class="win">5 أجيال</b> من تقنيات الجوال، ثم مطوّر JavaScript في Dirac Systems بالقاهرة حيث <b class="win">ترقّيت إلى قائد تقني بالإنابة</b>، ثم مطوّر أول لتطبيقات الجوال متعددة المنصات في مصرف الراجحي بالرياض. وفي المصرف كتبت الجسر الأصلي الذي يضيف البطاقة إلى Apple Wallet من داخل تطبيق هجين، ونشرته مفتوح المصدر.',
+      'ch3.projects': [
+        ['Mink Foodiee', 'Indian Mesh · تطبيق لطلب الطعام من المطاعم، مرّ بخمسة أجيال من تقنيات الجوال.', ''],
+        ['Mobile POS · ESS HR app', 'Dirac Systems · تطبيق ويب لنقاط البيع، وتطبيق جوال للخدمة الذاتية للموظفين.', ''],
+        ['cordova-apple-wallet', 'مصرف الراجحي · يضيف بطاقات المصرف إلى Apple Wallet من داخل تطبيق المباشر. مفتوح المصدر.', GH + 'cordova-apple-wallet', 'مُدرج في Ionic Native', IONIC]
+      ],
+      'ch3.skills': ['Ionic', 'Cordova', 'AngularJS', 'Angular', 'Objective-C', 'Apple Pay · PassKit', 'Firebase'],
 
       'ch4.years': '2019 – 2020', 'ch4.title': 'الويب على مستوى وطني',
-      'ch4.body': 'في مجموعة GET القابضة بنيت مسارات الحجز وسلة الشراء وتخصيص التذاكر في «تذكرتي»، منصة بطاقة المشجع والتذاكر في مصر لكأس الأمم الأفريقية 2019، بالعربية والإنجليزية والفرنسية. وفي Aumet نقلت سوقًا طبيًا بين الشركات إلى العرض من جهة الخادم حتى تصل إليه محركات البحث.',
-      'ch4.chips': ['*كأس الأمم الأفريقية 2019', 'العربية والإنجليزية والفرنسية', 'Angular Universal · NgRx'],
+      'ch4.body': 'في مجموعة GET القابضة بنيت مسارات الحجز وسلة الشراء وتخصيص التذاكر في «تذكرتي»، <b class="win">أول بطاقة مشجع في مصر</b> ومنصة التذاكر التي خدمت كأس الأمم الأفريقية 2019، بالعربية والإنجليزية والفرنسية. وفي Aumet نقلت سوقًا طبيًا بين الشركات إلى العرض من جهة الخادم حتى تصل إليه محركات البحث.',
+      'ch4.projects': [
+        ['تذكرتي', 'مجموعة GET القابضة · منصة بطاقة المشجع والتذاكر في مصر لكأس الأمم الأفريقية 2019.', 'https://www.tazkarti.com/'],
+        ['بوابة أعمال Aumet', 'Aumet · سوق طبي بين الشركات يُعرض من جهة الخادم، مع لوحة الإدارة الخاصة به.', 'https://aumet.com/']
+      ],
+      'ch4.skills': ['Angular', 'Angular Universal · SSR', 'NgRx', 'RxJS', 'PrimeNG', 'i18n · RTL', 'SEO · PWA'],
 
       'ch5.years': '2020 – 2024', 'ch5.title': 'قيادة الفريق',
-      'ch5.body': 'في VOIS، شركة الخدمات المشتركة التابعة لفودافون، تدرّجت من مطوّر أول إلى قائد تقني للبرمجيات. بنيت مكتبة واجهات Angular مشتركة على نظام تصميم العلامة، وأضفت بوابات جودة إلى خط التكامل المستمر، وقِست حالة كل منصة قبل كل دورة تخطيط. كما وظّفت المهندسين الذين يبنون عليها، وأهّلتهم ووجّهتهم.',
-      'ch5.chips': ['*تغطية اختبارات وحدات 100%', 'الأفضل أداءً في Frontend Guild ‏2021/22', '*‎+25%‎ في دقة توقّع التسليم'],
+      'ch5.body': 'في VOIS، شركة الخدمات المشتركة التابعة لفودافون، تدرّجت من مطوّر أول إلى قائد تقني للبرمجيات، وحصلت على لقب <b class="win">الأفضل أداءً في Frontend Guild ‏2021/22</b>. بنيت مكتبة واجهات Angular مشتركة على نظام تصميم العلامة، وأضفت بوابات جودة إلى خط التكامل المستمر، فبلغت بوابات Easy Ticket <b class="win">تغطية اختبارات 100%</b>. وجعل التقدير بأسلوب SAFe التسليم <b class="win">أدق توقّعًا بنسبة 25%</b>. كما وظّفت المهندسين الذين يبنون عليها ووجّهتهم، وصمّمت <b class="win">برنامج تأهيل 30-60-90 يومًا</b>.',
+      'ch5.projects': [
+        ['Easy Ticket', 'فودافون ألمانيا للشركات · بوابات البلاغات لعملاء الأعمال: الضيف والخبير ومتتبّع التذاكر.', 'https://vodafone.de/1234'],
+        ['مكتبة brix', 'فودافون · مكتبة مكوّنات Angular المشتركة المبنية على نظام تصميم العلامة.', '']
+      ],
+      'ch5.skills': ['Angular', 'NgRx', 'RxJS', 'Angular Material', 'Micro-frontends', 'Jenkins', 'SonarQube', 'Karma · Jasmine', 'SAFe'],
 
       'ch6.years': '2024 – الآن', 'ch6.title': 'هندسة المنصة',
-      'ch6.body': 'في بنك قناة السويس أصمّم منصة الواجهات المصغّرة التي تنمو عليها تطبيقات البنك للشركات: مستودع Nx واحد، ومكتبات مشتركة تصدر بأرقام إصدار دلالية، وAngular Signals في القلب، ومكتبة مكوّنات موثّقة بالعربية والإنجليزية. ويُطلق كل فريق جزءه على خط إصدار خاص به.',
-      'ch6.chips': ['*موثوقية 99.9%', '*‎−30%‎ في الدين التقني', '*تأهيل أكثر من 10 مهندسين'],
+      'ch6.body': 'في بنك قناة السويس أصمّم منصة الواجهات المصغّرة التي تنمو عليها تطبيقات البنك للشركات: مستودع Nx واحد، ومكتبات مشتركة تصدر بأرقام إصدار دلالية، وAngular Signals في القلب، ومكتبة مكوّنات موثّقة بالعربية والإنجليزية. ويُطلق كل فريق جزءه على خط إصدار خاص به. تعمل المنصة <b class="win">بموثوقية 99.9%</b>، وخفّضت معايير SonarQube والمراجعات الدين التقني <b class="win">بنسبة 30%</b>، وأدرّب <b class="win">أكثر من 10 مهندسين</b> في جلسات أسبوعية.',
+      'ch6.projects': [
+        ['الخدمات المصرفية للشركات', 'بنك قناة السويس · بوابة الخدمات المصرفية الإلكترونية للشركات، مبنية على المنصة.', 'https://business.scbank.com.eg/login'],
+        ['SCB Core FE', 'بنك قناة السويس · منصة الواجهات المصغّرة على Nx ومكتبة المكوّنات الموثّقة.', '']
+      ],
+      'ch6.skills': ['Angular Signals', 'Standalone', 'NgRx Signals', 'Nx', 'Micro-frontends', 'PrimeNG', 'Tailwind', 'Transloco', 'Jest', 'Playwright', 'Azure DevOps'],
 
       'ch7.years': '2018 – الآن', 'ch7.title': 'تأسيس المعمل',
       'ch7.body': 'أسّست Enigma Technology Lab في القاهرة من أجل الأنظمة التي لم يعد أحد قادرًا على تغييرها بأمان. ومنهجه هو نفسه الذي سار عليه هذا الخط: اقرأ ما هو موجود، وقِسه، وغيّر جزءًا واحدًا في كل مرة، وأثبت كل خطوة. إنه معمل لا وكالة، لأن المعمل يختبر كل ادعاء.',
-      'ch7.chips': ['المؤسس', 'القاهرة'],
+      'ch7.skills': ['تدقيق الكود', 'تحديث الأنظمة القديمة', 'الترحيل على مراحل', 'بناء الفرق'],
 
       'caps.title': 'ما أقدّمه',
       'caps.items': [
@@ -698,8 +768,8 @@ button:hover { background: var(--accent); }
   /* self-check: both languages carry the same keys and list shapes */
   const shape = o => Array.isArray(o) ? o.map(shape) : typeof o === 'object' ? Object.keys(o).sort().map(k => [k, shape(o[k])]) : 's';
   console.assert(JSON.stringify(shape(T.en)) === JSON.stringify(shape(T.ar)), 'i18n: en and ar differ in keys or list lengths');
-  document.querySelectorAll('[data-i18n],[data-i18n-html],[data-chips]').forEach(el => {
-    const k = el.dataset.i18n || el.dataset.i18nHtml || el.dataset.chips;
+  document.querySelectorAll('[data-i18n],[data-i18n-html],[data-chips],[data-projects]').forEach(el => {
+    const k = el.dataset.i18n || el.dataset.i18nHtml || el.dataset.chips || el.dataset.projects;
     console.assert(k in T.en && k in T.ar, 'i18n: missing key ' + k);
   });
 
@@ -737,11 +807,25 @@ button:hover { background: var(--accent); }
     }
   };
 
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting || e.boundingClientRect.top < 0) { e.target.classList.add('on'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -38% 0px' });
+
   function render() {
     document.querySelectorAll('[data-i18n]').forEach(n => { n.textContent = L[n.dataset.i18n]; });
     document.querySelectorAll('[data-i18n-html]').forEach(n => { n.innerHTML = L[n.dataset.i18nHtml]; });
     document.querySelectorAll('[data-chips]').forEach(n => n.replaceChildren(...L[n.dataset.chips].map(chip)));
+    const link = (a, url) => { a.href = url; a.target = '_blank'; a.rel = 'noopener'; return a; };
+    // optional badge: a recognition with its own proof link
+    document.querySelectorAll('[data-projects]').forEach(n => n.replaceChildren(...L[n.dataset.projects].map(([name, desc, url, badge, badgeUrl]) => {
+      const li = el('li'), h = el(url ? 'a' : 'span', 'p-name', name);
+      if (url) link(h, url);
+      li.append(h, el('p', '', desc));
+      if (badge) li.append(link(el('a', 'p-badge mono', badge), badgeUrl));
+      return li;
+    })));
     document.querySelectorAll('[data-remote]').forEach(card => remotes[card.dataset.remote](card));
+    document.querySelectorAll('.win').forEach(w => io.observe(w));
     document.querySelectorAll('.seg label[title]').forEach(l => { l.title = l.querySelector('.sr').textContent; });
   }
 
